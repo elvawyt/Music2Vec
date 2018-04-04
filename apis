@@ -1,5 +1,7 @@
 My netease music uid=40356946
 
-Get an user's playlist /user/playlist?uid=32953014
+Get an user's playlist: /user/playlist?uid=32953014
 
+Get an user's follow list:  /user/follows?uid=32953015
 
+Get an user's listen record: /user/record?uid=32953014&type=0
