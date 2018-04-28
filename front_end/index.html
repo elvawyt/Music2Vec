@@ -1,0 +1,286 @@
+<!DOCTYPE HTML>
+<!--
+	Helios by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Music box</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body class="homepage">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+
+					<!-- Inner -->
+						<div class="inner">
+							<header>
+								<h1><a href="index.html" id="logo">Music box</a></h1>
+								<hr />
+								<p>Music recommendation system based on GloVe</p>
+								<hr />
+								<form name="form" action = "get"  >
+
+								<div style="width: 420px; margin: 0 auto;" >
+
+									<input type="text" class="form-control" id="text" aria-describedby="Help" placeholder="Enter" style=" float: left;display: inline; width: 380px;" name="text">
+									<!--<img src="images/v2.png" onclick="recognition.start()" style="display: inline; float: left; margin: 10px 12px 11px 11px; cursor: pointer;" >-->
+									<!--<button onclick="recognition.start()" style="float: right; border: none !important;border-color:#a6e0db ;"><img src="images/v2.png"></button>-->
+									<!--<img src="images/v2.png" onclick="recognition.start()" style="display: inline-block; float: right; padding-right: 300px; padding-top: 10px;" >-->
+
+
+									<!--<p id = "ops"></p>-->
+										<!--<button type="submit" class="btn btn-primary">Submit</button>-->
+										<!--<a href="javascript:gotosubmit();" class="more scorlly">submit</a>-->
+										<br>
+										<br>
+									<br>
+									<br>
+
+								</div>
+								<!--<button onclick="recognition.start()" style="float: right; border: none !important;padding-right: 100px; padding:0; margin: 0"><img src="images/v2.png"></button>-->
+
+								<!--<a href="#one" style="color: #4e555b" class="more scrolly"  onclick="gotosubmit()">submit</a>-->
+
+								<!--<a href="#one"  class="more scrolly" style="color: #ffc107">Learn More</a>-->
+								<!--<small id="emailHelp" class="form-text text-muted">###</small>-->
+
+								<!--<input type="text" id="output" name="output" >-->
+								<footer>
+								<a href="#banner" class="button circled scrolly" onclick = "gotosubmit()">Start</a>
+								</footer>
+
+							</form>
+							<script type="text/javascript">
+								function gotosubmit() {
+									var text = document.getElementsByName("text")[0].value;
+								    console.log(text);
+									var xhr = new XMLHttpRequest();
+									xhr.open('GET',"http://127.0.0.1:5000/getuid?text="+text,true);
+									xhr.send();
+									// text.action="https://dev.cfapps.us10.hana.ondemand.com/broken2complete?";
+									// text.submit();
+									
+									xhr.onreadystatechange = function() {
+										if(xhr.readyState==4 && xhr.status==200) {
+											// alert(xhr.responseText);
+											var response = xhr.responseText;
+											response = JSON.parse(response);
+											
+											document.getElementById("uname").value = response[0];
+											document.getElementById('uname').innerHTML = "Hi, " + response[0];
+											document.getElementById("uimg").src = response[1];
+											document.getElementById('uimg').innerHTML = response[1];
+											var i = 2;
+											while(i <= response.length){
+												document.getElementById("mimg"+i).src = response[i];
+												document.getElementById('mimg'+i).innerHTML = response[i++];
+												document.getElementById('mname'+i).value = response[i];
+												document.getElementById('mname'+i).innerHTML = response[i++];
+												document.getElementById('mscore'+i).value = response[i];
+												document.getElementById('mscore'+i).innerHTML = response[i++];										
+												
+											}
+											
+
+										}
+									}
+// 
+								}
+							</script>
+								
+							</header>
+							
+						</div>
+
+					<!-- Nav -->
+						<!--<nav id="nav">
+							<ul>
+								<li><a href="index.html">Home</a></li>
+								<li>
+									<a href="#">Dropdown</a>
+									<ul>
+										<li><a href="#">Lorem ipsum dolor</a></li>
+										<li><a href="#">Magna phasellus</a></li>
+										<li><a href="#">Etiam dolore nisl</a></li>
+										<li>
+											<a href="#">And a submenu &hellip;</a>
+											<ul>
+												<li><a href="#">Lorem ipsum dolor</a></li>
+												<li><a href="#">Phasellus consequat</a></li>
+												<li><a href="#">Magna phasellus</a></li>
+												<li><a href="#">Etiam dolore nisl</a></li>
+											</ul>
+										</li>
+										<li><a href="#">Veroeros feugiat</a></li>
+									</ul>
+								</li>
+								<li><a href="left-sidebar.html">Left Sidebar</a></li>
+								<li><a href="right-sidebar.html">Right Sidebar</a></li>
+								<li><a href="no-sidebar.html">No Sidebar</a></li>
+							</ul>
+						</nav>-->
+
+				</div>
+
+			<!-- Banner -->
+				<section id="banner">
+				
+						<img id = "uimg" src = "" style="width: 10%; height: 18%" alt="pic"/>
+						<br>
+						<center><h3><p id="uname" value="" style="text-align:center"></p></h3></center>
+				  
+					</header>
+				</section>
+
+			<!-- Carousel -->
+				<section class="carousel">
+					<div class="reel">
+
+						<article>
+							<a href="#" class="image featured"><img src="" id = "mimg2" alt="" /></a>
+							<header>
+								<h3><p id="mname3" value="" style="text-align:center"></p></h3>
+								<h4><p id="mscore4" value="" style="text-align:center"></p></h4>
+								
+							</header>
+							
+						</article>
+
+						<article>
+							<a href="#" class="image featured"><img src="" id = "mimg5" alt="" /></a>
+							<header>
+								<h3><p id="mname6" value="" style="text-align:center"></p></h3>
+								<h4><p id="mscore7" value="" style="text-align:center"></p></h4>
+								
+							</header>
+							
+						</article>
+
+						<article>
+							<a href="#" class="image featured"><img src="" id = "mimg8" alt="" /></a>
+							<header>
+								<h3><p id="mname9" value="" style="text-align:center"></p></h3>
+								<h4><p id="mscore10" value="" style="text-align:center"></p></h4>
+								
+							</header>
+							
+						</article>
+						<article>
+							<a href="#" class="image featured"><img src="" id = "mimg11" alt="" /></a>
+							<header>
+								<h3><p id="mname12" value="" style="text-align:center"></p></h3>
+								<h4><p id="mscore13" value="" style="text-align:center"></p></h4>
+								
+							</header>
+							
+						</article>
+
+						<article>
+							<a href="#" class="image featured"><img src="" id = "mimg14" alt="" /></a>
+							<header>
+								<h3><p id="mname15" value="" style="text-align:center"></p></h3>
+								<h4><p id="mscore16" value="" style="text-align:center"></p></h4>
+								
+							</header>
+							
+						</article>
+
+						<article>
+							<a href="#" class="image featured"><img src="" id = "mimg17" alt="" /></a>
+							<header>
+								<h3><p id="mname18" value="" style="text-align:center"></p></h3>
+								<h4><p id="mscore19" value="" style="text-align:center"></p></h4>
+								
+							</header>
+							
+						</article>
+
+						<article>
+							<a href="#" class="image featured"><img src="" id = "mimg20" alt="" /></a>
+							<header>
+								<h3><p id="mname21" value="" style="text-align:center"></p></h3>
+								<h4><p id="mscore22" value="" style="text-align:center"></p></h4>
+								
+							</header>
+							
+						</article>
+
+						<article>
+							<a href="#" class="image featured"><img src="" id = "mimg23" alt="" /></a>
+							<header>
+								<h3><p id="mname24" value="" style="text-align:center"></p></h3>
+								<h4><p id="mscore25" value="" style="text-align:center"></p></h4>
+								
+							</header>
+							
+						</article>
+						<article>
+							<a href="#" class="image featured"><img src="" id = "mimg26" alt="" /></a>
+							<header>
+								<h3><p id="mname27" value="" style="text-align:center"></p></h3>
+								<h4><p id="mscore28" value="" style="text-align:center"></p></h4>
+								
+							</header>
+							
+						</article>
+
+						<article>
+							<a href="#" class="image featured"><img src="" id = "mimg29" alt="" /></a>
+							<header>
+								<h3><p id="mname30" value="" style="text-align:center"></p></h3>
+								<h4><p id="mscore31" value="" style="text-align:center"></p></h4>
+								
+							</header>
+							
+						</article>
+
+					</div>
+				</section>
+
+			<!-- Main -->
+				
+
+				
+				</div>
+
+			<!-- Features -->
+				
+			<!-- Footer -->
+				
+					
+					
+
+							<!-- Tweets -->
+								
+								
+
+								</section>
+
+						</div>
+						<hr />
+						
+					</div>
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.onvisible.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
