@@ -74,19 +74,16 @@
 											var response = xhr.responseText;
 											response = JSON.parse(response);
 											
-											document.getElementById("uname").value = response[0];
 											document.getElementById('uname').innerHTML = "Hi, " + response[0];
 											document.getElementById("uimg").src = response[1];
-											document.getElementById('uimg').innerHTML = response[1];
 											var i = 2;
 											while(i <= response.length){
 												document.getElementById("mimg"+i).src = response[i];
-												document.getElementById('mimg'+i).innerHTML = response[i++];
-												document.getElementById('mname'+i).value = response[i];
-												document.getElementById('mname'+i).innerHTML = response[i++];
-												document.getElementById('mscore'+i).value = response[i];
-												document.getElementById('mscore'+i).innerHTML = response[i++];										
-												
+												i++;
+												document.getElementById('mname'+i).innerHTML = response[i];
+												i++;
+												document.getElementById('mscore'+i).innerHTML = response[i];		
+												i++;
 											}
 											
 
