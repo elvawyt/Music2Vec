@@ -14,9 +14,11 @@ The returned recommendations:
 Note that currently the backend is just reading the .json files in ./testData, if you want to query with your own ID that's not in there, you will need to run code in Pipeline.ipynb, generate your .json file.
 
 To start the backend:
+```
+python glove_flask.py
+```
 
-    python glove_flask.py
-    
+
 Then go to index.html to see the frontend.
 
 
